@@ -29,11 +29,11 @@ class AppFixtures extends Fixture
 
         $user = $this->createUser();
 
-        for ($c = 0; $c < 3; $c++) {
-            $category = $this->createCategory();
+        for ($i = 0; $i < 100; $i++) {
+            $article = $this->createArticle($user);
 
-            for ($a = 0; $a < 5; $a++) {
-                $this->createArticle($user, $category);
+            for ($c = 0; $c < 5; $c++) {
+                $this->createCategory($article);
             }
         }
 
@@ -54,18 +54,18 @@ class AppFixtures extends Fixture
         return $user;
     }
 
-    public function createCategory(): Category
+    public function createCategory(Article $article)
     {
         $faker = Factory::create();
 
         $category = new Category();
         $category->setName($faker->word);
-        $this->manager->persist($category);
+        $category->addArticle($article);
 
-        return $category;
+        $this->manager->persist($category);
     }
 
-    public function createArticle(User $user, Category $category): Article
+    public function createArticle(User $user): Article
     {
         $faker = Factory::create();
 
@@ -73,8 +73,7 @@ class AppFixtures extends Fixture
         $article
             ->setUser($user)
             ->setContent($faker->text)
-            ->setTitle($faker->title)
-            ->addCategory($category);
+            ->setTitle($faker->sentence);
 
         $this->manager->persist($article);
 
