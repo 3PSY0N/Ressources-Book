@@ -10,22 +10,26 @@
     "browserslist": [
         "defaults"
     ],
-    "dependencies": {},
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "@popperjs/core": "^2.9.1",
+        "bootstrap": "^5.0.0-beta3"
+    },
     "devDependencies": {
         "@symfony/stimulus-bridge": "^2.0.0",
         "@symfony/webpack-encore": "^1.0.0",
-        "@tailwindcss/postcss7-compat": "^2.0.4",
         "autoprefixer": "^9",
         "core-js": "^3.0.0",
         "file-loader": "^6.0.0",
+        "glob-all": "^3.2.1",
         "jquery": "^3.6.0",
         "postcss": "^7",
         "postcss-loader": "^5.0.0",
         "purgecss-webpack-plugin": "^4.0.3",
         "regenerator-runtime": "^0.13.2",
+        "sass": "^1.32.8",
+        "sass-loader": "^11.0.0",
         "stimulus": "^2.0.0",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat",
-        "webpack-notifier": "^1.6.0",
-        "glob-all": "^3.2.1"
+        "webpack-notifier": "^1.6.0"
     }
 }
