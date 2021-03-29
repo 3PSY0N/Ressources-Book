@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="container">
+            <h1 class="text-center my-5">Ressources</h1>
+
+
+            <div class="col-8 d-flex m-auto mb-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search"
+                           aria-describedby="search">
+                    <button class="btn btn-outline-secondary" type="button" id="search">Search</button>
+                </div>
+            </div>
+
+
+            <div class="d-flex flex-wrap justify-content-center">
+                {% for i in 1..10 %}
+                    <div class="card col-8 mb-4">
+                        <div class="card-body">
+                            This is some text within a card body.
+                        </div>
+                        <div class="card-footer d-flex justify-content-between small">
+                            <div class="small">
+                                <span><time datetime="{{ 'now'|date("c", "Europe/Paris") }}">{{ 'now'|date("m/d/Y H:i", "Europe/Paris") }}</time></span>
+                            </div>
+                            <div class="small">
+                                <span class="badge rounded-pill bg-primary">Primary</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </main>
+{% endblock %}
