@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+body {
+  font-size: 16px;
+  background: $light;
+  text-rendering: optimizeLegibility;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.p-90 {
+  padding-top: 90px;
+}
