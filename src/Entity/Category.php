@@ -29,15 +29,20 @@ class Category
     private ?string $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="categories")
-     */
-    private Collection $articles;
-
-    /**
      * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"name"})
      */
     private ?string $slug;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Article::class, mappedBy="categories")
+     */
+    private $articles;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $color;
 
     public function __construct()
     {
@@ -74,6 +79,17 @@ class Category
     }
 
     /**
+     * Generates the magic method
+     */
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->name;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
+    /**
      * @return Collection|Article[]
      */
     public function getArticles(): Collection
@@ -96,6 +112,18 @@ class Category
         if ($this->articles->removeElement($article)) {
             $article->removeCategory($this);
         }
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }
