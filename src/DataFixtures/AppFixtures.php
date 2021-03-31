@@ -29,13 +29,13 @@ class AppFixtures extends Fixture
 
         $user = $this->createUser();
 
-        for ($i = 0; $i < 100; $i++) {
-            $article = $this->createArticle($user);
-
-            for ($c = 0; $c < 5; $c++) {
-                $this->createCategory($article);
-            }
-        }
+//        for ($i = 0; $i < 100; $i++) {
+//            $article = $this->createArticle($user);
+//
+//            for ($c = 0; $c < 5; $c++) {
+//                $this->createCategory($article);
+//            }
+//        }
 
         $manager->flush();
     }
