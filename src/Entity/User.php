@@ -175,4 +175,15 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * Generates the magic method
+     */
+    public function __toString(): string
+    {
+        // to show the name of the Category in the select
+        return $this->displayName;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
 }
