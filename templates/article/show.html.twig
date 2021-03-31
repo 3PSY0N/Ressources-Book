@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container my-5 form-container m-auto">
+        <h1 class="text-center fw-bold">{{ article.title }}</h1>
+        <hr class="hr-black-bg-white">
+
+        <section class="article-content my-5">
+            {{ article.content|markdown_to_html }}
+        </section>
+
+        <section>
+            <div class="d-flex justify-content-between">
+                <span class="small">Posted: <time datetime="{{ article.createdAt|date("c", "Europe/Paris") }}">{{ article.createdAt|date("m/d/Y \\a\\t H:i", "Europe/Paris") }}</time></span>
+                {% if date(article.updatedAt) > article.createdAt %}
+                <span class="small">Updated: <time datetime="{{ article.updatedAt|date("c", "Europe/Paris") }}">{{ article.updatedAt|date("m/d/Y \\a\\t H:i", "Europe/Paris") }}</time></span>
+                {% endif %}
+            </div>
+            <div>
+                <span class="small">Categories: </span>
+                {% for category in article.categories %}
+                <span class="badge rounded-pill bg-{{ category.color }}">{{ category.name }}</span>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}

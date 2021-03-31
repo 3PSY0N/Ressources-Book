@@ -47,13 +47,15 @@ class Article
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\JoinColumn(name="articles", referencedColumnName="id")
      */
-    private Collection $categories;
+    private $categories;
 
     public function __construct()
     {
         $this->categories = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
