@@ -8,7 +8,10 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import bootstrap from 'bootstrap';
 import jquery from 'jquery';
+
 import './styles/app.scss';
+import './js/easyMDE';
+import './js/HLJS';
 
 // start the Stimulus application
 import './bootstrap';
