@@ -2,15 +2,27 @@
 
 {% block title %}Home{% endblock %}
 
+{% set routeName = app.request.attributes.get('_route') %}
+
 {% block body %}
     <main>
         <div class="container">
             <h1 class="text-center my-5">Ressources</h1>
 
-            <div class="col-8 d-flex m-auto mb-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search">
-                    <button class="btn btn-outline-secondary" type="button" id="search">Search</button>
+            <div class="col-8 d-flex flex-column m-auto mb-5">
+                <div class="input-group m-auto justify-content-center">
+                    <form method="get" action="{{ path('app_search') }}">
+                        <div class="input-group">
+                        <input type="text" name="filter" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="search">
+                        <button class="btn btn-outline-secondary" type="submit" id="search">Search</button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="text-center">
+                    {% if routeName == 'app_search' %}
+                        {{ articles.getTotalItemCount }} results found.
+                    {% endif %}
                 </div>
             </div>
 
@@ -46,15 +58,17 @@
                             </div>
                         </div>
                     </div>
-                {% else %}
-                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                        <div class="m-auto"><p>No records found.. <a href="{{ path('article_new') }}">Add new</a></p></div>
-                    {% else %}
-                        <div class="m-auto"><p>No records found..</p></div>
-                    {% endif %}
+{#                {% else %}#}
+{#                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}#}
+{#                        <div class="m-auto"><p>No records found.. <a href="{{ path('article_new') }}">Add new</a></p></div>#}
+{#                    {% else %}#}
+{#                        <div class="m-auto"><p>No records found..</p></div>#}
+{#                    {% endif %}#}
                 {% endfor %}
             </div>
-
+            <div class="navigation">
+                {{ knp_pagination_render(articles) }}
+            </div>
         </div>
     </main>
 {% endblock %}
