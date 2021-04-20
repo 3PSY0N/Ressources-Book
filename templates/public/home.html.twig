@@ -7,7 +7,7 @@
 {% block body %}
     <main>
         <div class="container">
-            <h1 class="text-center my-5">Ressources</h1>
+            <h1 class="text-center my-5 no-underline text-dark">Ressources</h1>
 
             <div class="col-8 d-flex flex-column m-auto mb-5">
                 <div class="input-group m-auto justify-content-center">
@@ -19,7 +19,7 @@
                     </form>
 
                 </div>
-                <div class="text-center">
+                <div class="text-center m-1">
                     {% if routeName == 'app_search' %}
                         {{ articles.getTotalItemCount }} results found.
                     {% endif %}
