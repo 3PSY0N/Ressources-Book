@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="form-container m-auto col-lg-10 col-sm-12">
-        <h1>Add new article</h1>
+        <h1>{{ edit_label|default('Add new') }} article</h1>
         {{ form_start(form) }}
         {{ form_errors(form) }}
         {{ form_row(form.title) }}
